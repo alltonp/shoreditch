@@ -1,7 +1,6 @@
 Shoreditch
 ----------
-???
-
+Coming soon ...
 
 Usage
 -----
