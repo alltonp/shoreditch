@@ -9,7 +9,7 @@ Add the following lines to your build.sbt
 
     resolvers += "Paulos' repo" at "http://dl.bintray.com/alltonp/repo/"
 
-    libraryDependencies += "xx.xxxxx" %% "shoreditch" % "1"
+    libraryDependencies += "im.mange" %% "shoreditch" % "1"
 
 
 Code license
