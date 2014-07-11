@@ -6,4 +6,6 @@
  env:
    global:
      - LIB_VERSION=$TRAVIS_BUILD_NUMBER
+     - secure: "OQlGpGpDAe+va3EAddpUfm1zjNuDpFBk8CxOxHKk1sTNPudKOqKgGeBk0QuLxv6CJs7XF7ZU8rLC3jz34X2gVfEx2OXxsr2ai9EXkNADDyilJMrISbQiGskmUXPwgIZ3Eu2Z6TDA/MzatzWSd3yFK0/1Jr+CDCWRY+Oqvb0CO+E="
+     - secure: "cyVSVdtyC4UX3HtH+BQgbMS/tjOksTXqLVBTk0Rhyg+Dqt113smqtI9kBkpkgeINaAaNl5EXY/l9Q5Hq0bMl1AtmIRaZOUrJ3JbSwFsuePSAiiNgbhaGv/3ZHSlUnP45JPE3B7vC3Wrz8h0r5husdndnbUxKGV/70bSkEI51/yU="
  script: sbt test +publish
