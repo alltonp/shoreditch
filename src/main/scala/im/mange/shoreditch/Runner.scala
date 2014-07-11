@@ -1,11 +1,9 @@
 package im.mange.shoreditch
 
-import net.liftweb.http._
-import net.liftweb.common.Box
-import net.liftweb.json.{JsonParser, NoTypeHints, Serialization}
-import net.liftweb.json.Serialization._
 import net.liftweb.common.Full
+import net.liftweb.http._
 
+//TODO: kill println's or use a real logger (like reprobate)
 object Runner {
   def run(a: Action) = {
     val r = try { a.run }

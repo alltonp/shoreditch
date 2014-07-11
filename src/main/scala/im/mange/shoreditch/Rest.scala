@@ -1,11 +1,7 @@
 package im.mange.shoreditch
 
-import net.liftweb.http._
 import net.liftweb.common.Box
-import net.liftweb.json.{JsonParser, NoTypeHints, Serialization}
-import net.liftweb.json.Serialization._
-import net.liftweb.common.Full
-import scala.Some
+import net.liftweb.http._
 
 trait RestHelper extends net.liftweb.http.rest.RestHelper {
   def runAction(a: ⇒ Action): () ⇒ Box[LiftResponse] = { () ⇒ Runner.run(a) }
