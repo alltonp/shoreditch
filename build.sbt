@@ -14,7 +14,8 @@ scalaVersion := "2.10.4"
 crossScalaVersions := Seq("2.10.4", "2.11.0")
 
 libraryDependencies ++= Seq(
-  "org.scalatest" % "scalatest_2.10" % "2.1.4" % "test"
+  "org.scalatest" % "scalatest_2.10" % "2.1.4" % "test",
+  "net.liftweb" %% "lift-webkit" % "2.5.1"
 )
 
 bintrayPublishSettings
