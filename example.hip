@@ -12,11 +12,11 @@ run on:env
 => {price="6000"}
 <= {returnValue="12345"}
 
-"assert thing exists in:y @id" => on:y/assert/thing/exists/@id GET
+"assert thing exists in:y @id" => on:y/assert/thing/exists/12345 GET
 happy <= {failures=[]}
 sad <= {failures=["thing with @id does not exist"]}
 
-"assert thing price in:z @id 6000" => on:z/assert/thing/price/id/6000 GET
+"assert thing price in:z @id 6000" => on:z/assert/thing/price/12345/6000 GET
 happy -> {failures=[]}
 sad -> {failures=["price of @id expected x but was y"]}
 
