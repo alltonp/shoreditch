@@ -1,8 +1,8 @@
 ============================================================
 id <= create thing in:x => price:6000
 
-assert thing exists in:y @id
-assert thing price in:z @id 6000
+assert thing exists in:y => @id
+assert thing price in:z => @id 6000
 =============================================================
 
 run on:env
