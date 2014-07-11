@@ -8,8 +8,8 @@ import net.liftweb.common.Full
 import scala.Some
 
 trait RestHelper extends net.liftweb.http.rest.RestHelper {
-  def run(a: ⇒ Action): () ⇒ Box[LiftResponse] = { () ⇒ Runner.run(a) }
-  def run(c: ⇒ Check): () ⇒ Box[LiftResponse] = { () ⇒ Runner.run(c) }
+  def runAction(a: ⇒ Action): () ⇒ Box[LiftResponse] = { () ⇒ Runner.run(a) }
+  def runCheck(c: ⇒ Check): () ⇒ Box[LiftResponse] = { () ⇒ Runner.run(c) }
 
   object GET {
     def unapplySeq(in: Req): Option[Seq[String]] = in match {
