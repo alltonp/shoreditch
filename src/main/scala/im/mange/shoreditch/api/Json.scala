@@ -1,6 +1,5 @@
 package im.mange.shoreditch.api
 
-import CheckResponse
 import net.liftweb.json.Serialization._
 import net.liftweb.json.{JsonParser, NoTypeHints, Serialization}
 
