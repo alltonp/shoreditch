@@ -8,7 +8,7 @@ Add the following lines to your build.sbt
 
     resolvers += "Paulos' repo" at "http://dl.bintray.com/alltonp/repo/"
 
-    libraryDependencies += "im.mange" %% "shoreditch" % "1"
+    libraryDependencies += "im.mange" %% "shoreditch" % "(https://api.bintray.com/packages/alltonp/repo/shoreditch/versions/_latest)"
 
 
 Code license
