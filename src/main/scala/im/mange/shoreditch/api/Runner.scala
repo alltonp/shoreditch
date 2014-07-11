@@ -1,5 +1,6 @@
-package im.mange.shoreditch
+package im.mange.shoreditch.api
 
+import im.mange.shoreditch.api.Check
 import net.liftweb.common.Full
 import net.liftweb.http._
 

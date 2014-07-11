@@ -1,8 +1,11 @@
-package im.mange.shoreditch
+package im.mange.shoreditch.api
 
 import net.liftweb.common.Box
-import net.liftweb.http._
+import net.liftweb.http.{GetRequest, LiftResponse, PostRequest, Req}
 
+/**
+ * Created by pall on 12/07/2014.
+ */
 trait RestHelper extends net.liftweb.http.rest.RestHelper {
   def runAction(a: ⇒ Action): () ⇒ Box[LiftResponse] = { () ⇒ Runner.run(a) }
   def runCheck(c: ⇒ Check): () ⇒ Box[LiftResponse] = { () ⇒ Runner.run(c) }
