@@ -1,13 +1,4 @@
-shoreditch  
-
-<a href="https://travis-ci.org/alltonp/shoreditch" target="_blank"><img src="https://travis-ci.org/alltonp/shoreditch.png?branch=master"></a>
-
-[![Build Status](https://travis-ci.org/alltonp/shoreditch.png?branch=master)](https://travis-ci.org/alltonp/shoreditch)
-
-<a href="https://bintray.com/alltonp/repo/shoreditch/_latestVersion" target="_blank"><img src="https://api.bintray.com/packages/alltonp/repo/shoreditch/images/download.png"></a>
-
-[ ![Download](https://api.bintray.com/packages/alltonp/repo/shoreditch/images/download.png) ](https://bintray.com/alltonp/repo/shoreditch/_latestVersion)
-
+shoreditch <a href="https://travis-ci.org/alltonp/shoreditch" target="_blank"><img src="https://travis-ci.org/alltonp/shoreditch.png?branch=master"></a> <a href="https://bintray.com/alltonp/repo/shoreditch/_latestVersion" target="_blank"><img src="https://api.bintray.com/packages/alltonp/repo/shoreditch/images/download.png"></a>
 
 ==========
 Coming soon
