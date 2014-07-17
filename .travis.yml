@@ -11,7 +11,6 @@
      - secure: "E3W5v11ytppxaXiLNFtTfpv0jsvwYYgrolp1ST8z60UqI3iKjUnPJLSgmirXvGE7iZy6A2YYPh7lbk2lFWay2H1un/opsXQDbhEtHJiSeg1ixugx3IciPTGRO+pKGKvuFYbeI5PteX0en/OZzv/Yj6Lln+uCfHTkAlu+IyCLVE0="
      - secure: "e8ygnnpdkZjew7fL606uT7Z4dZgjWvM4bKSWYV+w7Tq2hOXQtlGqEJGmppW9LtxB6FZM2mOG8allbMynZEH2IcjknQIRv6avbHRZB7iMUxpzzz6M9qy+mKpfgWeFtGp0oTtxSDvM7tev7b5UpFHQNRgGJ5KXh190EtH/EhhFZxA="
  before_script: ./publish/bintray.sh
- script: sbt test +publish
- after_script: sbt "+ publishSigned" sonatypeReleaseAll
+ script: sbt test +publish +publishSigned sonatypeReleaseAll
  notifications:
    email: false
