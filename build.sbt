@@ -1,7 +1,7 @@
-import scala.Some
 import scala.util.Try
-import bintray.Keys._
+//import bintray.Keys._
 
+sonatypeSettings
 
 name := "shoreditch"
 
@@ -18,11 +18,11 @@ libraryDependencies ++= Seq(
   "net.liftweb" %% "lift-webkit" % "2.5.1"
 )
 
-bintrayPublishSettings
+//bintrayPublishSettings
 
-repository in bintray := "repo"
+//repository in bintray := "repo"
 
-bintrayOrganization in bintray := None
+//bintrayOrganization in bintray := None
 
 publishMavenStyle := true
 
