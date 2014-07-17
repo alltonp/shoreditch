@@ -6,5 +6,6 @@ resolvers ++= Seq("bintray-sbt-plugin-releases" at "http://dl.bintray.com/conten
 
 addSbtPlugin("me.lessis" % "bintray-sbt" % "0.1.1")
 
-resolvers ++= Seq("Sonatype Repo" at "http://oss.sonatype.org/content/groups/public/")
+addSbtPlugin("com.typesafe.sbt" % "sbt-pgp" % "0.8.3")
 
+resolvers ++= Seq("Sonatype Repo" at "http://oss.sonatype.org/content/groups/public/")
