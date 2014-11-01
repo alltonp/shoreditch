@@ -1,3 +1,4 @@
+import scala.Some
 import scala.util.Try
 import bintray.Keys._
 
