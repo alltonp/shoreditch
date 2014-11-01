@@ -8,8 +8,6 @@
      - LIB_VERSION=$TRAVIS_BUILD_NUMBER
      - secure: "OQlGpGpDAe+va3EAddpUfm1zjNuDpFBk8CxOxHKk1sTNPudKOqKgGeBk0QuLxv6CJs7XF7ZU8rLC3jz34X2gVfEx2OXxsr2ai9EXkNADDyilJMrISbQiGskmUXPwgIZ3Eu2Z6TDA/MzatzWSd3yFK0/1Jr+CDCWRY+Oqvb0CO+E="
      - secure: "cyVSVdtyC4UX3HtH+BQgbMS/tjOksTXqLVBTk0Rhyg+Dqt113smqtI9kBkpkgeINaAaNl5EXY/l9Q5Hq0bMl1AtmIRaZOUrJ3JbSwFsuePSAiiNgbhaGv/3ZHSlUnP45JPE3B7vC3Wrz8h0r5husdndnbUxKGV/70bSkEI51/yU="
-     - secure: "E3W5v11ytppxaXiLNFtTfpv0jsvwYYgrolp1ST8z60UqI3iKjUnPJLSgmirXvGE7iZy6A2YYPh7lbk2lFWay2H1un/opsXQDbhEtHJiSeg1ixugx3IciPTGRO+pKGKvuFYbeI5PteX0en/OZzv/Yj6Lln+uCfHTkAlu+IyCLVE0="
-     - secure: "e8ygnnpdkZjew7fL606uT7Z4dZgjWvM4bKSWYV+w7Tq2hOXQtlGqEJGmppW9LtxB6FZM2mOG8allbMynZEH2IcjknQIRv6avbHRZB7iMUxpzzz6M9qy+mKpfgWeFtGp0oTtxSDvM7tev7b5UpFHQNRgGJ5KXh190EtH/EhhFZxA="
  before_script: ./publish/bintray.sh
  script: sbt test +publish
  notifications:

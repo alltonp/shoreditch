@@ -1,8 +1,7 @@
-import scala.Some
-import scala.util.Try
 import bintray.Keys._
 
-//sonatypeSettings
+import scala.util.Try
+
 
 name := "shoreditch"
 
