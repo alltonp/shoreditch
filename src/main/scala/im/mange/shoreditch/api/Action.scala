@@ -8,5 +8,5 @@ trait Action extends Service {
 }
 
 case class Parameters(in: List[In], out: Option[Out])
-case class In(name: String, value: Option[String], validValues: List[String])
+case class In(name: String, value: Option[String], validValues: List[String] = Nil)
 case class Out(name: String)
