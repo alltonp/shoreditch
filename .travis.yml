@@ -1,14 +1,18 @@
- language: scala
- scala:
-   - "2.10.4"
- jdk:
-   - oraclejdk7
- env:
-   global:
-     - LIB_VERSION=$TRAVIS_BUILD_NUMBER
-     - secure: "OQlGpGpDAe+va3EAddpUfm1zjNuDpFBk8CxOxHKk1sTNPudKOqKgGeBk0QuLxv6CJs7XF7ZU8rLC3jz34X2gVfEx2OXxsr2ai9EXkNADDyilJMrISbQiGskmUXPwgIZ3Eu2Z6TDA/MzatzWSd3yFK0/1Jr+CDCWRY+Oqvb0CO+E="
-     - secure: "cyVSVdtyC4UX3HtH+BQgbMS/tjOksTXqLVBTk0Rhyg+Dqt113smqtI9kBkpkgeINaAaNl5EXY/l9Q5Hq0bMl1AtmIRaZOUrJ3JbSwFsuePSAiiNgbhaGv/3ZHSlUnP45JPE3B7vC3Wrz8h0r5husdndnbUxKGV/70bSkEI51/yU="
- before_script: ./publish/bintray.sh
- script: sbt test +publish
- notifications:
-   email: false
+language: scala
+scala:
+- 2.10.4
+jdk:
+- oraclejdk7
+
+env:
+  global:
+  - LIB_VERSION=$TRAVIS_BUILD_NUMBER
+  - secure: ez04JEN9Cy49ouutl1NHmNc+hSbpUNQ1n418NEGTljgLX/ZYdRUrONj9XcxCi5YI5pii33XQXiMgWwbtyiuGFuq5HBopLnIWNY5NON/yRI9lrmMc7Otz2TkNII/Mvlcvl2+GukXCDdo+5MI30zLYLCgIMocp/Ek5NugVURcit4w=
+  - secure: VSydp+fWGg+uNsWX2QZKPt/s1JH+ZWrpzF/ou6llOIVowO98JPV3vNttpVeQuI5hpAtLe/8HaoW78wHgGKjrSzvSh6/tKw1B3uxYmW0U+kkfgZExGbEm0Nphu1gEHICrgLNA/WuEiHFdxvUpsIh3lTCsfDgstu69YKwZ4VkQ69Q=
+  - secure: EP0KhwHuY3OzdgXqDUpcZs/V7q/RsqHblcTf0ROesdRMmHY4e8r+V0ergLNEXScCfXAbzSGZ1eSGJ1PN4wqNCDyu563OMTqfTm7uxCrz7l+fxWXWle6nOU3W09/j+KQzWwiFcsZJrIMFlAaG+6ytyKH1fGhI4fEeZAa7eK4bzq8=
+
+before_script: ./scripts/prepublish.sh
+script: ./scripts/ci-build.sh
+
+notifications:
+  email: false

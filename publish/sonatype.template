@@ -1,4 +1,0 @@
-credentials += Credentials("Sonatype Nexus Repository Manager",
-  "oss.sonatype.org",
-  $ST_USER,
-  $ST_KEY)

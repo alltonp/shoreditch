@@ -1,4 +1,4 @@
-import bintray.Keys._
+//import bintray.Keys._
 
 import scala.util.Try
 
@@ -7,7 +7,7 @@ name := "shoreditch"
 
 organization := "im.mange"
 
-version := Try(sys.env("LIB_VERSION")).getOrElse("1")
+version := Try(sys.env("BUILD_NUMBER")).map("1.0." + _).getOrElse("1.0-SNAPSHOT")
 
 scalaVersion := "2.10.4"
 
@@ -18,11 +18,21 @@ libraryDependencies ++= Seq(
   "net.liftweb" %% "lift-webkit" % "2.5.1"
 )
 
-bintrayPublishSettings
+//bintrayPublishSettings
 
-repository in bintray := "repo"
+//repository in bintray := "repo"
 
-bintrayOrganization in bintray := None
+//bintrayOrganization in bintray := None
+
+sonatypeSettings
+
+publishTo <<= version { project_version ⇒
+  val nexus = "https://oss.sonatype.org/"
+  if (project_version.trim.endsWith("SNAPSHOT"))
+    Some("snapshots" at nexus + "content/repositories/snapshots")
+  else
+    Some("releases" at nexus + "service/local/staging/deploy/maven2")
+}
 
 publishMavenStyle := true
 
@@ -31,6 +41,8 @@ publishArtifact in Test := false
 homepage := Some(url("https://github.com/alltonp/shoreditch"))
 
 licenses +=("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.html"))
+
+credentials += Credentials("Sonatype Nexus Repository Manager", "oss.sonatype.org", System.getenv("SONATYPE_USER"), System.getenv("SONATYPE_PASSWORD"))
 
 pomExtra :=
     <scm>
