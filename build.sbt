@@ -1,5 +1,3 @@
-//import bintray.Keys._
-
 import scala.util.Try
 
 
@@ -17,12 +15,6 @@ libraryDependencies ++= Seq(
   "org.scalatest" % "scalatest_2.10" % "2.1.4" % "test",
   "net.liftweb" %% "lift-webkit" % "2.5.1"
 )
-
-//bintrayPublishSettings
-
-//repository in bintray := "repo"
-
-//bintrayOrganization in bintray := None
 
 sonatypeSettings
 
