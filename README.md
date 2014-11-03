@@ -6,7 +6,7 @@ Add the following lines to your build.sbt
 
     resolvers += "Sonatype Repo" at "http://oss.sonatype.org/content/groups/public/"
 
-    libraryDependencies += "im.mange" %% "shoreditch" % "version"
+    libraryDependencies += "im.mange" %% "shoreditch-api" % "version"
 
 
 Code license
