@@ -1,5 +1,7 @@
 <a href="https://travis-ci.org/alltonp/shoreditch" target="_blank"><img src="https://travis-ci.org/alltonp/shoreditch.png?branch=master"></a>
 
+<a href="http://htmlpreview.github.io/?https://raw.githubusercontent.com/alltonp/talk/master/se.html">Welcome to Shoreditch</a>
+
 Usage
 -----
 Add the following lines to your build.sbt
