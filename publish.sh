@@ -1,1 +1,0 @@
-./sbt "publishSigned" sonatypeReleaseAll
