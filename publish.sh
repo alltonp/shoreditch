@@ -1,1 +1,1 @@
-./sbt +publishSigned sonatypeReleaseAll
+./sbt "publishSigned" sonatypeReleaseAll
