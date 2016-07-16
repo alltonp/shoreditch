@@ -5,7 +5,7 @@ case class StaticPathPart(str: String) extends PathPart { def simpleString = str
 case class DynPathPart(name: String) extends PathPart { def simpleString = "@" + name }
 
 object Route {
-  def apply[Service](requestMethod: String, path: String, fn: PartialFunction[List[String], Service]): Route[Service] = {
+  def apply[Service](requestMethod: String, path: String, fn: PartialFunction[Seq[String], Service]): Route[Service] = {
     new Route[Service](requestMethod, splitPath(path), fn)
   }
 

@@ -29,9 +29,9 @@ case class SuccessfulCheckWithArg(arg: String) extends Check {
 }
 
 case object SuccessfulAction extends Action {
-  override def run(in: List[In]) = success(None)
+  override def run(in: Seq[In]) = success(None)
 }
 
 case object SuccessfulActionWithReturn extends Action {
-  override def run(in: List[In]) = success(Some("returnValue"))
+  override def run(in: Seq[In]) = success(Some("returnValue"))
 }

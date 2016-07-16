@@ -9,9 +9,9 @@ object Runner {
 
   def run(a: Action, req: Request) =
     try { a.run(Json.deserialiseIn(parse(req.json))) }
-    catch { case e: Throwable ⇒ a.failure(List(e.getMessage)) }
+    catch { case e: Throwable ⇒ a.failure(Seq(e.getMessage)) }
 
   def run(c: Check) =
     try { c.run }
-    catch { case e: Throwable ⇒ c.failure(List(e.getMessage)) }
+    catch { case e: Throwable ⇒ c.failure(Seq(e.getMessage)) }
 }
