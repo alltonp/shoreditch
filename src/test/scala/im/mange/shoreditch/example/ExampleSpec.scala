@@ -53,14 +53,19 @@ class ExampleSpec extends WordSpec with MustMatchers {
         |]}""".stripMargin
     ))))
 
-    println(s"$response\n$expected")
+//    println(s"$response\n$expected")
 
     response mustEqual expected
   }
 
-  //TODO: we should check the arg
+  //TODO: we must check the arg
   "handles check requests with arg" in {
     shoreditch.handle(SimpleRequest("base/check/successful/check/with/arg/arg")) mustEqual success
+  }
+
+  "handles action requests with params" in {
+    val in = """[{"value":"value","name":"name","validValues":[]}]"""
+    shoreditch.handle(SimpleRequest("base/action/successful/action/with/parameter", json = in)) mustEqual success
   }
 
   "handles action requests with params and empty json" in {
