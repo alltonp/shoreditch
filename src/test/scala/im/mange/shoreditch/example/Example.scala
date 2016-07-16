@@ -12,8 +12,9 @@ object Example {
     alias = "example",
     debug = true,
     routes = Seq(
+      //TODO: should there be trailing slashes or not??? me thinks not ...
       "successful/check/" check SuccessfulCheck,
-      "successful/check/with/@arg" check SuccessfulCheckWithArg,
+      "successful/check/with/arg/@arg" check SuccessfulCheckWithArg,
       "successful/action/" action SuccessfulAction,
       "successful/action/with/parameters" action SuccessfulActionWithParameters,
       "successful/action/with/return" action SuccessfulActionWithReturn,
@@ -42,7 +43,11 @@ case object SuccessfulAction extends Action {
 
 case object SuccessfulActionWithParameters extends Action {
   override val parameters = Parameters(Seq(In("name", None)), None)
-  override def run(in: Seq[In]) = success(None)
+  override def run(in: Seq[In]) = {
+//    println(in)
+//    if (in.size == 1) success(None) else
+    failure(Seq("Failed"))
+  }
 }
 
 case object FailureAction extends Action {

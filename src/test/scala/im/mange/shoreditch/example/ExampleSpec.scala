@@ -41,14 +41,16 @@ class ExampleSpec extends WordSpec with MustMatchers {
     val expected = Some(compact(render(parse(
       """{"name":"Example System","alias":"example","version":"10001",
         |"checks":[
+        |{"url":"base/check/successful/check/with/arg/@arg"},
         |{"url":"base/check/failure/check"},
-        |{"url":"base/check/successful/check"},
-        |{"url":"base/check/successful/check/with/@arg"}],
+        |{"url":"base/check/successful/check"}
+        |]
         |"actions":[
         |{"url":"base/action/successful/action/with/parameters","in":[{"name":"name","validValues":[]}]},
         |{"url":"base/action/successful/action","in":[]},
         |{"url":"base/action/failure/action","in":[]},
-        |{"url":"base/action/successful/action/with/return","in":[]}]}""".stripMargin
+        |{"url":"base/action/successful/action/with/return","in":[]}
+        |]}""".stripMargin
     ))))
 
     println(s"$response\n$expected")
@@ -56,12 +58,21 @@ class ExampleSpec extends WordSpec with MustMatchers {
     response mustEqual expected
   }
 
-  "handles check requests with args" in {
-    shoreditch.handle(SimpleRequest("base/check/successful/check/with/args/arg")) mustEqual success
+  //TODO: we should check the arg
+  "handles check requests with arg" in {
+    shoreditch.handle(SimpleRequest("base/check/successful/check/with/arg/arg")) mustEqual success
   }
 
-  "handles action requests with args" in {
-    shoreditch.handle(SimpleRequest("base/action/successful/action/with/args", json = "")) mustEqual success
+  //TODO: hmm this should blow up really ... how can In be resolved ???
+  //seems like the despatching is not what it seems ...
+  //so "successful/action/" is picking this up not us ...
+  "handles action requests with params and empty json" in {
+    shoreditch.handle(SimpleRequest("base/action/successful/action/with/parameters", json = "")) mustEqual failure
+  }
+
+  "handles action requests with params and invalid json" in {
+    shoreditch.handle(SimpleRequest("base/action/successful/action/with/parameters", json = "bd")) mustEqual
+      Some("""{"failures":["unknown token b\nNear: b"]}""")
   }
 
   //BUG: this seems to run a check, maybe the first it finds?

@@ -15,7 +15,11 @@ case class Shoreditch(base: String = "shoreditch",
 
   private val handler = new ShoreditchHandler(this)
 
-  def handle(request: Request) = handler.handler(request).map(_())
+  def handle(request: Request) = {
+    val theHandler = handler.handler(request)
+//    println(theHandler)
+    theHandler.map(_())
+  }
 
   val actions = handler.actions
   val checks = handler.checks

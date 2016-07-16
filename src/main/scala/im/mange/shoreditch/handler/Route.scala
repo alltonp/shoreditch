@@ -41,7 +41,13 @@ class Route[Service] private (requestMethod: String, pathParts: List[PathPart], 
     }
 
   def attemptMatch(req: Request) : Option[Service] = {
-    val pairs = pathParts zip req.path.split("/")
+//    println(req.path)
+    val pathBits = req.path.split("/")
+    if (pathBits.size != pathParts.size) return None
+    val pairs = pathParts zip pathBits
+//    println(pathBits.size)
+//    println(pathParts.size)
+//    println(pairs)
     val theMatch = recMatch(pairs)
     theMatch map attemptFn
   }
