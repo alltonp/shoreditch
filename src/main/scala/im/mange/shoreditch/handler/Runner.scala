@@ -1,6 +1,7 @@
 package im.mange.shoreditch.handler
 
-import im.mange.shoreditch.api.{Action, Check, Json}
+import im.mange.shoreditch.{Action, Check}
+import im.mange.shoreditch.api.Json
 
 object Runner {
   import org.json4s._

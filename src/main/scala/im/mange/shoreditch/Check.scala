@@ -1,4 +1,6 @@
-package im.mange.shoreditch.api
+package im.mange.shoreditch
+
+import im.mange.shoreditch.api.Service
 
 trait Check extends Service {
   def run: CheckResponse

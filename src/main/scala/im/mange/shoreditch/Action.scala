@@ -1,4 +1,6 @@
-package im.mange.shoreditch.api
+package im.mange.shoreditch
+
+import im.mange.shoreditch.api.Service
 
 trait Action extends Service {
   val parameters: Parameters = Parameters(Nil, None)

@@ -1,6 +1,6 @@
 package im.mange.shoreditch.example
 
-import im.mange.shoreditch.Shoreditch
+import im.mange.shoreditch.{Action, Check, In, Shoreditch}
 import im.mange.shoreditch.Shoreditch._
 import im.mange.shoreditch.api._
 

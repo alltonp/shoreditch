@@ -1,6 +1,6 @@
 package im.mange.shoreditch.handler
 
-import im.mange.shoreditch.Shoreditch
+import im.mange.shoreditch.{Action, Check, Shoreditch}
 import im.mange.shoreditch.api._
 import im.mange.shoreditch.handler.HttpMethodPartialFunctions._
 
