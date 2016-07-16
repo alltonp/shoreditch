@@ -13,6 +13,7 @@ object Example {
     debug = true,
     routes = Seq(
       "successful/check/" check SuccessfulCheck,
+      "failure/check/" check FailureCheck,
       "successful/check/with/@arg" check SuccessfulCheckWithArg,
       "successful/action/" action SuccessfulAction,
       "successful/action/with/return" action SuccessfulActionWithReturn
@@ -23,6 +24,10 @@ object Example {
 
 case object SuccessfulCheck extends Check {
   override def run = success
+}
+
+case object FailureCheck extends Check {
+  override def run = failure(Seq("Failed"))
 }
 
 case class SuccessfulCheckWithArg(arg: String) extends Check {

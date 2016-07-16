@@ -2,13 +2,14 @@ package im.mange.shoreditch.example
 
 import org.scalatest.{MustMatchers, WordSpec}
 import scala.collection.concurrent.TrieMap
+import org.json4s.native.JsonMethods._
 
 class ExampleSpec extends WordSpec with MustMatchers {
   private val shoreditch = Example.shoreditch
 
   "captures checks and actions" in {
-    shoreditch.checks.size mustEqual 2
-    shoreditch.checks.head mustEqual "base/check/successful/check" -> SuccessfulCheck
+    shoreditch.checks.size mustEqual 3
+    shoreditch.checks must contain ("base/check/successful/check" -> SuccessfulCheck)
 
     shoreditch.actions mustEqual TrieMap(
       "base/action/successful/action" -> SuccessfulAction,
@@ -32,8 +33,19 @@ class ExampleSpec extends WordSpec with MustMatchers {
 
   "handles metadata requests" in {
     val response = shoreditch.handle(SimpleRequest("base/metadata"))
-    response mustEqual
-      Some("""{"name":"Example System","alias":"example","version":"10001","checks":[{"url":"base/check/successful/check"},{"url":"base/check/successful/check/with/@arg"}],"actions":[{"url":"base/action/successful/action","in":[]},{"url":"base/action/successful/action/with/return","in":[]}]}""")
+    val expected = compact(render(parse(
+      """{"name":"Example System","alias":"example","version":"10001",
+        |"checks":[
+        |{"url":"base/check/failure/check"},
+        |{"url":"base/check/successful/check"},
+        |{"url":"base/check/successful/check/with/@arg"}],
+        |"actions":[{"url":"base/action/successful/action","in":[]},{"url":"base/action/successful/action/with/return","in":[]}]}""".stripMargin
+    )))
+
+//    println(response)
+//    println(expected)
+
+    response mustEqual Some(expected)
   }
 
   "handles check requests with args" in {
