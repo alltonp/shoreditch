@@ -12,14 +12,13 @@ object Example {
     alias = "example",
     debug = true,
     routes = Seq(
-      //TODO: should there be trailing slashes or not??? me thinks not ...
-      "successful/check/" check SuccessfulCheck,
+      "successful/check" check SuccessfulCheck,
       "successful/check/with/arg/@arg" check SuccessfulCheckWithArg,
-      "successful/action/" action SuccessfulAction,
+      "successful/action" action SuccessfulAction,
       "successful/action/with/parameters" action SuccessfulActionWithParameters,
       "successful/action/with/return" action SuccessfulActionWithReturn,
-      "failure/check/" check FailureCheck,
-      "failure/action/" action FailureAction
+      "failure/check" check FailureCheck,
+      "failure/action" action FailureAction
     )
   )
 }
