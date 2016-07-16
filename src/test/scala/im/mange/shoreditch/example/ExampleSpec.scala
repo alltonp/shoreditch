@@ -75,21 +75,15 @@ class ExampleSpec extends WordSpec with MustMatchers {
       Some("""{"failures":["unknown token b\nNear: b"]}""")
   }
 
-  //BUG: this seems to run a check, maybe the first it finds?
   "handles index requests" in {
-    pending
     shoreditch.handle(SimpleRequest("base")) mustEqual None
   }
 
-  //BUG: this seems to run a check, maybe the first it finds?
   "rejects checks with bogus endings to valid service" in {
-    pending
     shoreditch.handle(SimpleRequest("base/check/successful/check/bogus")) mustEqual None
   }
 
-  //BUG: this seems to run an action, maybe the first it finds?
   "rejects actions with bogus endings to valid service" in {
-    pending
     shoreditch.handle(SimpleRequest("base/action/successful/action/bogus")) mustEqual None
   }
 
