@@ -1,6 +1,6 @@
 package im.mange.shoreditch.example
 
-import im.mange.shoreditch.{Action, Check, In, Shoreditch}
+import im.mange.shoreditch._
 import im.mange.shoreditch.Shoreditch._
 import im.mange.shoreditch.api._
 
@@ -15,6 +15,7 @@ object Example {
       "successful/check/" check SuccessfulCheck,
       "successful/check/with/@arg" check SuccessfulCheckWithArg,
       "successful/action/" action SuccessfulAction,
+      "successful/action/with/parameters" action SuccessfulActionWithParameters,
       "successful/action/with/return" action SuccessfulActionWithReturn,
       "failure/check/" check FailureCheck,
       "failure/action/" action FailureAction
@@ -36,6 +37,11 @@ case class SuccessfulCheckWithArg(arg: String) extends Check {
 }
 
 case object SuccessfulAction extends Action {
+  override def run(in: Seq[In]) = success(None)
+}
+
+case object SuccessfulActionWithParameters extends Action {
+  override val parameters = Parameters(Seq(In("name", None)), None)
   override def run(in: Seq[In]) = success(None)
 }
 

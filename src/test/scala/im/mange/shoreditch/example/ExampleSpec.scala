@@ -12,7 +12,7 @@ class ExampleSpec extends WordSpec with MustMatchers {
     shoreditch.checks.size mustEqual 3
     shoreditch.checks must contain ("base/check/successful/check" -> SuccessfulCheck)
 
-    shoreditch.actions.size mustEqual 3
+    shoreditch.actions.size mustEqual 4
     shoreditch.actions must contain ("base/action/successful/action" -> SuccessfulAction)
   }
 
@@ -45,13 +45,13 @@ class ExampleSpec extends WordSpec with MustMatchers {
         |{"url":"base/check/successful/check"},
         |{"url":"base/check/successful/check/with/@arg"}],
         |"actions":[
+        |{"url":"base/action/successful/action/with/parameters","in":[{"name":"name","validValues":[]}]},
         |{"url":"base/action/successful/action","in":[]},
         |{"url":"base/action/failure/action","in":[]},
         |{"url":"base/action/successful/action/with/return","in":[]}]}""".stripMargin
     ))))
 
-//    println(response)
-//    println(expected)
+    println(s"$response\n$expected")
 
     response mustEqual expected
   }
