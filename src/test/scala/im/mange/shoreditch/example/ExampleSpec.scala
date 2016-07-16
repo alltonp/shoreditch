@@ -5,6 +5,8 @@ import org.scalatest.{MustMatchers, WordSpec}
 
 class ExampleSpec extends WordSpec with MustMatchers {
   private val shoreditch = Example.shoreditch
+  private val success = Some("""{"failures":[]}""")
+  private val failure = Some("""{"failures":["Failed"]}""")
 
   "captures checks and actions" in {
     shoreditch.checks.size mustEqual 3
@@ -19,19 +21,19 @@ class ExampleSpec extends WordSpec with MustMatchers {
   }
 
   "handles check requests" in {
-    shoreditch.handle(SimpleRequest("base/check/successful/check")) mustEqual Some("""{"failures":[]}""")
+    shoreditch.handle(SimpleRequest("base/check/successful/check")) mustEqual success
   }
 
   "handles check requests with failures" in {
-    shoreditch.handle(SimpleRequest("base/check/failure/check")) mustEqual Some("""{"failures":["Failed"]}""")
+    shoreditch.handle(SimpleRequest("base/check/failure/check")) mustEqual failure
   }
 
   "handles action requests" in {
-    shoreditch.handle(SimpleRequest("base/action/successful/action")) mustEqual Some("""{"failures":[]}""")
+    shoreditch.handle(SimpleRequest("base/action/successful/action")) mustEqual success
   }
 
   "handles action requests with failures" in {
-    shoreditch.handle(SimpleRequest("base/action/failure/action")) mustEqual Some("""{"failures":["Failed"]}""")
+    shoreditch.handle(SimpleRequest("base/action/failure/action")) mustEqual failure
   }
 
   "handles metadata requests" in {
@@ -55,32 +57,29 @@ class ExampleSpec extends WordSpec with MustMatchers {
   }
 
   "handles check requests with args" in {
-    shoreditch.handle(SimpleRequest("base/check/successful/check/with/args/arg")) mustEqual Some("""{"failures":[]}""")
+    shoreditch.handle(SimpleRequest("base/check/successful/check/with/args/arg")) mustEqual success
   }
 
   "handles action requests with args" in {
-    shoreditch.handle(SimpleRequest("base/action/successful/action/with/args", json = "")) mustEqual Some("""{"failures":[]}""")
+    shoreditch.handle(SimpleRequest("base/action/successful/action/with/args", json = "")) mustEqual success
   }
 
   //BUG: this seems to run a check, maybe the first it finds?
   "handles index requests" in {
     pending
-    val response = shoreditch.handle(SimpleRequest("base"))
-    response mustEqual None
+    shoreditch.handle(SimpleRequest("base")) mustEqual None
   }
 
   //BUG: this seems to run a check, maybe the first it finds?
   "rejects checks with bogus endings to valid service" in {
     pending
-    val response = shoreditch.handle(SimpleRequest("base/check/successful/check/bogus"))
-    response mustEqual None
+    shoreditch.handle(SimpleRequest("base/check/successful/check/bogus")) mustEqual None
   }
 
   //BUG: this seems to run an action, maybe the first it finds?
   "rejects actions with bogus endings to valid service" in {
     pending
-    val response = shoreditch.handle(SimpleRequest("base/action/successful/action/bogus"))
-    response mustEqual None
+    shoreditch.handle(SimpleRequest("base/action/successful/action/bogus")) mustEqual None
   }
 
   //TODO: handles action requests with params
