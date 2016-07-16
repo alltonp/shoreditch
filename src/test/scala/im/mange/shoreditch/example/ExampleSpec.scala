@@ -98,9 +98,7 @@ class ExampleSpec extends WordSpec with MustMatchers {
     shoreditch.handle(SimpleRequest("base/action/successful/action/bogus")) mustEqual None
   }
 
-  //TODO: handles action requests with params
   //TODO: handles action requests with return values
-  //TODO: add failure cases ... no json on actions, bad json etc
   //TODO: ensure that actions are always posts and checks are always gets ...
   //TODO: ensure keys cannot be duplicated
 }
