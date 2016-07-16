@@ -10,6 +10,7 @@ case class Shoreditch(base: String = "shoreditch",
                       alias: String,
                       checksEnabled: Boolean = true,
                       actionsEnabled: Boolean = true,
+                      debug: Boolean = false,
                       routes: Seq[Route[Service]]) {
 
   private val handler = new ShoreditchHandler(this)
@@ -18,6 +19,15 @@ case class Shoreditch(base: String = "shoreditch",
 
   val actions = handler.actions
   val checks = handler.checks
+
+  if (debug) println(
+    s"""\nShoreditch: /$base => $longName ($alias) V$version, checksEnabled: $checksEnabled, actionsEnabled: $actionsEnabled
+     | (${checks.size}) checks:\n${describe(checks.toSeq)}
+     | (${actions.size}) actions:\n${describe(actions.toSeq)}
+     """.stripMargin
+  )
+
+  private def describe(x: Seq[(String, Service)]) = x.map(c => s"  - ${c._1 + " -> " + c._2}").mkString("\n")
 }
 
 object Shoreditch {

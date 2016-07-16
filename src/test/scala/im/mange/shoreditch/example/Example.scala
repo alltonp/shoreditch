@@ -10,6 +10,7 @@ object Example {
     version = "10001",
     longName = "Example System",
     alias = "example",
+    debug = true,
     routes = Seq(
       "successful/check/" check SuccessfulCheck,
       "successful/check/with/@arg" check SuccessfulCheckWithArg,
