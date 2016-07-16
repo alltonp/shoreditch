@@ -41,17 +41,36 @@ class ExampleSpec extends WordSpec with MustMatchers {
     response mustEqual Some("""{"failures":[]}""")
   }
 
-  //BUG: this seems to run a check, maybe the first it finds?
-  //TODO: making / be the same as /metadata might help ...
-  "handles index requests" in {
-    val response = shoreditch.handle(SimpleRequest("base"))
+  "handles action requests with args" in {
+    val response = shoreditch.handle(SimpleRequest("base/action/successful/action/with/args", json = ""))
     response mustEqual Some("""{"failures":[]}""")
+  }
+
+  //BUG: this seems to run a check, maybe the first it finds?
+  "handles index requests" in {
+    pending
+    val response = shoreditch.handle(SimpleRequest("base"))
+    response mustEqual None
+  }
+
+  //BUG: this seems to run a check, maybe the first it finds?
+  "rejects checks with bogus endings to valid service" in {
+    pending
+    val response = shoreditch.handle(SimpleRequest("base/check/successful/check/bogus"))
+    response mustEqual None
+  }
+
+  //BUG: this seems to run an action, maybe the first it finds?
+  "rejects actions with bogus endings to valid service" in {
+    pending
+    val response = shoreditch.handle(SimpleRequest("base/action/successful/action/bogus"))
+    response mustEqual None
   }
 
   //TODO: handles action requests with params
   //TODO: handles action requests with return values
   //TODO: add failure cases ... no json on actions, bad json etc
-  //TODO: enusre that actions are always posts and checks are always gets ...
+  //TODO: ensure that actions are always posts and checks are always gets ...
 }
 
 
