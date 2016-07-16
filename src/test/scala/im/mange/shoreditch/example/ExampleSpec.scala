@@ -23,7 +23,7 @@ class ExampleSpec extends WordSpec with MustMatchers {
     response mustEqual Some("""{"failures":[]}""")
   }
 
-  "handles check requests failures" in {
+  "handles check requests with failures" in {
     val response = shoreditch.handle(SimpleRequest("base/check/failure/check"))
     response mustEqual Some("""{"failures":["Failed"]}""")
   }
@@ -31,6 +31,11 @@ class ExampleSpec extends WordSpec with MustMatchers {
   "handles action requests" in {
     val response = shoreditch.handle(SimpleRequest("base/action/successful/action"))
     response mustEqual Some("""{"failures":[]}""")
+  }
+
+  "handles action requests with failures" in {
+    val response = shoreditch.handle(SimpleRequest("base/action/failure/action"))
+    response mustEqual Some("""{"failures":["Failed"]}""")
   }
 
   "handles metadata requests" in {
@@ -88,6 +93,7 @@ class ExampleSpec extends WordSpec with MustMatchers {
   //TODO: handles action requests with return values
   //TODO: add failure cases ... no json on actions, bad json etc
   //TODO: ensure that actions are always posts and checks are always gets ...
+  //TODO: ensure keys cannot be duplicated
 }
 
 
