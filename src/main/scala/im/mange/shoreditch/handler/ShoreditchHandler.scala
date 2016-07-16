@@ -27,22 +27,18 @@ class ShoreditchHandler(shoreditch: Shoreditch) {
 
   //TODO: two things in here might explain the bogus GET listings we get ...
   private def summaryHandler(req: Request): Option[ShoreditchResponse] = {
-    //TODO: this check is stupid, remove it ...
     val summary = "metadata"
-    if (summary.isEmpty) None
-    else {
-      val summaryResponse: ShoreditchResponse = () => {
-        val theActions = actions.map(a => ActionMetaData(a._1, a._2.parameters.in, a._2.parameters.out)).toList
-        val theChecks = checks.map(c => CheckMetaData(c._1)).toList
+    val summaryResponse: ShoreditchResponse = () => {
+      val theActions = actions.map(a => ActionMetaData(a._1, a._2.parameters.in, a._2.parameters.out)).toList
+      val theChecks = checks.map(c => CheckMetaData(c._1)).toList
 
-        val metaData = MetaDataResponse(shoreditch.longName, shoreditch.alias, shoreditch.version, theChecks, theActions)
-        Json.serialise(metaData)
-      }
-      val summaryRoute: Route[ShoreditchResponse] = GET0(summary) {
-        summaryResponse
-      } withBase basePathParts
-      summaryRoute.attemptMatch(req)
+      val metaData = MetaDataResponse(shoreditch.longName, shoreditch.alias, shoreditch.version, theChecks, theActions)
+      Json.serialise(metaData)
     }
+    val summaryRoute: Route[ShoreditchResponse] = GET0(summary) {
+      summaryResponse
+    } withBase basePathParts
+    summaryRoute.attemptMatch(req)
   }
 
   private val matchers: Seq[(Request) => Option[Service]] = rebasedRoutes map { r ⇒ r.attemptMatch _ }
