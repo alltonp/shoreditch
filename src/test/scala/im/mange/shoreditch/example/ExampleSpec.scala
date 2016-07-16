@@ -33,7 +33,7 @@ class ExampleSpec extends WordSpec with MustMatchers {
   "handles metadata requests" in {
     val response = shoreditch.handle(SimpleRequest("base/metadata"))
     response mustEqual
-      Some("""{"name":"Example System","alias":"example","version":"10001","checks":[{"url":"base/check/successful/check"},{"url":"base/check/successful/check/with/arg"}],"actions":[{"url":"base/action/successful/action","in":[]},{"url":"base/action/successful/action/with/return","in":[]}]}""")
+      Some("""{"name":"Example System","alias":"example","version":"10001","checks":[{"url":"base/check/successful/check"},{"url":"base/check/successful/check/with/@arg"}],"actions":[{"url":"base/action/successful/action","in":[]},{"url":"base/action/successful/action/with/return","in":[]}]}""")
   }
 
   "handles check requests with args" in {

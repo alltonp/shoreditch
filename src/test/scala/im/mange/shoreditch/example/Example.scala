@@ -12,7 +12,7 @@ object Example {
     alias = "example",
     routes = Seq(
       "successful/check/" check SuccessfulCheck,
-      "successful/check/with/arg" check SuccessfulCheckWithArg,
+      "successful/check/with/@arg" check SuccessfulCheckWithArg,
       "successful/action/" action SuccessfulAction,
       "successful/action/with/return" action SuccessfulActionWithReturn
     )
