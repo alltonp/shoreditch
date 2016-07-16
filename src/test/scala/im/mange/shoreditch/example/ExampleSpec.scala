@@ -46,7 +46,7 @@ class ExampleSpec extends WordSpec with MustMatchers {
         |{"url":"base/check/successful/check"}
         |]
         |"actions":[
-        |{"url":"base/action/successful/action/with/parameter","in":[{"name":"name","validValues":[]}]},
+        |{"url":"base/action/successful/action/with/parameter","in":[{"name":"param1","validValues":[]}]},
         |{"url":"base/action/successful/action","in":[]},
         |{"url":"base/action/failure/action","in":[]},
         |{"url":"base/action/successful/action/with/return","in":[]}
@@ -64,12 +64,17 @@ class ExampleSpec extends WordSpec with MustMatchers {
   }
 
   "handles action requests with params" in {
-    val in = """[{"value":"value","name":"name","validValues":[]}]"""
+    val in = """[{"value":"param1Value","name":"param1"}]"""
     shoreditch.handle(SimpleRequest("base/action/successful/action/with/parameter", json = in)) mustEqual success
   }
 
+  "handles action requests with params with missing value" in {
+    val in = """[{"name":"param1"}]"""
+    shoreditch.handle(SimpleRequest("base/action/successful/action/with/parameter", json = in)) mustEqual failure("no value for param1")
+  }
+
   "handles action requests with params and empty json" in {
-    shoreditch.handle(SimpleRequest("base/action/successful/action/with/parameter", json = "")) mustEqual failure("name is mandatory")
+    shoreditch.handle(SimpleRequest("base/action/successful/action/with/parameter", json = "")) mustEqual failure("param1 is mandatory")
   }
 
   "handles action requests with params and invalid json" in {
