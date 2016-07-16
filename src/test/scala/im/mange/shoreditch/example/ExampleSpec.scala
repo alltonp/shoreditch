@@ -48,9 +48,10 @@ class ExampleSpec extends WordSpec with MustMatchers {
     response mustEqual Some("""{"failures":[]}""")
   }
 
-  //TODO: handles check requests with params - using args
   //TODO: handles action requests with params
-  //TODO: add failure cases ...
+  //TODO: handles action requests with return values
+  //TODO: add failure cases ... no json on actions, bad json etc
+  //TODO: enusre that actions are always posts and checks are always gets ...
 }
 
 
