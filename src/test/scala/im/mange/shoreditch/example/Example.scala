@@ -33,7 +33,7 @@ case object FailureCheck extends Check {
 }
 
 case class SuccessfulCheckWithArg(arg: String) extends Check {
-  override def run = success
+  override def run = if (arg == "argValue") success else failure(Seq("arg wasnt passed through"))
 }
 
 case object SuccessfulAction extends Action {

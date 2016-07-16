@@ -58,9 +58,8 @@ class ExampleSpec extends WordSpec with MustMatchers {
     response mustEqual expected
   }
 
-  //TODO: we must check the arg
   "handles check requests with arg" in {
-    shoreditch.handle(SimpleRequest("base/check/successful/check/with/arg/arg")) mustEqual success
+    shoreditch.handle(SimpleRequest("base/check/successful/check/with/arg/argValue")) mustEqual success
   }
 
   "handles action requests with params" in {
@@ -77,9 +76,14 @@ class ExampleSpec extends WordSpec with MustMatchers {
     shoreditch.handle(SimpleRequest("base/action/successful/action/with/parameter", json = "")) mustEqual failure("param1 is mandatory")
   }
 
-  "handles action requests with params and invalid json" in {
-    shoreditch.handle(SimpleRequest("base/action/successful/action/with/parameter", json = "bd")) mustEqual
+  "handles action requests with params and non json" in {
+    shoreditch.handle(SimpleRequest("base/action/successful/action/with/parameter", json = "bad")) mustEqual
       Some("""{"failures":["unknown token b\nNear: b"]}""")
+  }
+
+  "handles action requests with params and wrong json" in {
+    shoreditch.handle(SimpleRequest("base/action/successful/action/with/parameter", json = "[{}]")) mustEqual
+      Some("""{"failures":["No usable value for name\nDid not find value which can be converted into java.lang.String"]}""")
   }
 
   "handles index requests" in {
