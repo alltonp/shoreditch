@@ -13,10 +13,11 @@ object Example {
     debug = true,
     routes = Seq(
       "successful/check/" check SuccessfulCheck,
-      "failure/check/" check FailureCheck,
       "successful/check/with/@arg" check SuccessfulCheckWithArg,
       "successful/action/" action SuccessfulAction,
-      "successful/action/with/return" action SuccessfulActionWithReturn
+      "successful/action/with/return" action SuccessfulActionWithReturn,
+      "failure/check/" check FailureCheck,
+      "failure/action/" action FailureAction
     )
   )
 }
@@ -36,6 +37,10 @@ case class SuccessfulCheckWithArg(arg: String) extends Check {
 
 case object SuccessfulAction extends Action {
   override def run(in: Seq[In]) = success(None)
+}
+
+case object FailureAction extends Action {
+  override def run(in: Seq[In]) = failure(Seq("Failed"))
 }
 
 case object SuccessfulActionWithReturn extends Action {
