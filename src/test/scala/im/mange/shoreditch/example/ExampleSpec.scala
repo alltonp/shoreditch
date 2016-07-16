@@ -19,23 +19,19 @@ class ExampleSpec extends WordSpec with MustMatchers {
   }
 
   "handles check requests" in {
-    val response = shoreditch.handle(SimpleRequest("base/check/successful/check"))
-    response mustEqual Some("""{"failures":[]}""")
+    shoreditch.handle(SimpleRequest("base/check/successful/check")) mustEqual Some("""{"failures":[]}""")
   }
 
   "handles check requests with failures" in {
-    val response = shoreditch.handle(SimpleRequest("base/check/failure/check"))
-    response mustEqual Some("""{"failures":["Failed"]}""")
+    shoreditch.handle(SimpleRequest("base/check/failure/check")) mustEqual Some("""{"failures":["Failed"]}""")
   }
 
   "handles action requests" in {
-    val response = shoreditch.handle(SimpleRequest("base/action/successful/action"))
-    response mustEqual Some("""{"failures":[]}""")
+    shoreditch.handle(SimpleRequest("base/action/successful/action")) mustEqual Some("""{"failures":[]}""")
   }
 
   "handles action requests with failures" in {
-    val response = shoreditch.handle(SimpleRequest("base/action/failure/action"))
-    response mustEqual Some("""{"failures":["Failed"]}""")
+    shoreditch.handle(SimpleRequest("base/action/failure/action")) mustEqual Some("""{"failures":["Failed"]}""")
   }
 
   "handles metadata requests" in {
@@ -59,13 +55,11 @@ class ExampleSpec extends WordSpec with MustMatchers {
   }
 
   "handles check requests with args" in {
-    val response = shoreditch.handle(SimpleRequest("base/check/successful/check/with/args/arg"))
-    response mustEqual Some("""{"failures":[]}""")
+    shoreditch.handle(SimpleRequest("base/check/successful/check/with/args/arg")) mustEqual Some("""{"failures":[]}""")
   }
 
   "handles action requests with args" in {
-    val response = shoreditch.handle(SimpleRequest("base/action/successful/action/with/args", json = ""))
-    response mustEqual Some("""{"failures":[]}""")
+    shoreditch.handle(SimpleRequest("base/action/successful/action/with/args", json = "")) mustEqual Some("""{"failures":[]}""")
   }
 
   //BUG: this seems to run a check, maybe the first it finds?
