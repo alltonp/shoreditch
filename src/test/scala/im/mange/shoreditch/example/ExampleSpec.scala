@@ -46,7 +46,7 @@ class ExampleSpec extends WordSpec with MustMatchers {
         |{"url":"base/check/successful/check"}
         |]
         |"actions":[
-        |{"url":"base/action/successful/action/with/parameters","in":[{"name":"name","validValues":[]}]},
+        |{"url":"base/action/successful/action/with/parameter","in":[{"name":"name","validValues":[]}]},
         |{"url":"base/action/successful/action","in":[]},
         |{"url":"base/action/failure/action","in":[]},
         |{"url":"base/action/successful/action/with/return","in":[]}
@@ -67,11 +67,11 @@ class ExampleSpec extends WordSpec with MustMatchers {
   //seems like the despatching is not what it seems ...
   //so "successful/action/" is picking this up not us ...
   "handles action requests with params and empty json" in {
-    shoreditch.handle(SimpleRequest("base/action/successful/action/with/parameters", json = "")) mustEqual failure("Failed")
+    shoreditch.handle(SimpleRequest("base/action/successful/action/with/parameter", json = "")) mustEqual failure("Failed")
   }
 
   "handles action requests with params and invalid json" in {
-    shoreditch.handle(SimpleRequest("base/action/successful/action/with/parameters", json = "bd")) mustEqual
+    shoreditch.handle(SimpleRequest("base/action/successful/action/with/parameter", json = "bd")) mustEqual
       Some("""{"failures":["unknown token b\nNear: b"]}""")
   }
 
