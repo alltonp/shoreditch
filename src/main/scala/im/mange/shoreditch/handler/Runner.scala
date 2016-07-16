@@ -3,7 +3,8 @@ package im.mange.shoreditch.handler
 import im.mange.shoreditch.api.{Action, Check, Json}
 
 object Runner {
-  import net.liftweb.json._
+  import org.json4s._
+  import org.json4s.native.JsonMethods._
 
   def run(a: Action, req: Request) =
     try { a.run(Json.deserialiseIn(parse(req.json))) }

@@ -1,10 +1,10 @@
 package im.mange.shoreditch.api
 
-import net.liftweb.json.Serialization._
-import net.liftweb.json._
+import org.json4s._
+import org.json4s.native.Serialization._
 
 object Json {
-  private val theFormats = Serialization.formats(NoTypeHints)
+  private val theFormats = formats(NoTypeHints)
 
   def serialise(r: ActionResponse) = {
     implicit val formats = theFormats
