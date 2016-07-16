@@ -4,9 +4,6 @@ import im.mange.shoreditch.api._
 import im.mange.shoreditch.handler.HttpMethodPartialFunctions._
 import im.mange.shoreditch.handler.{Request, Route, ShoreditchHandler}
 
-//TODO: should be no api.liftweb deps in here
-//TODO: make depends on json4s
-//TODO: move Action/Check and any deps to im.mange.shoreditch package for ease of airport
 case class Shoreditch(base: String = "shoreditch",
                       version: String,
                       longName: String,
