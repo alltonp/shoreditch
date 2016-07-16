@@ -63,11 +63,8 @@ class ExampleSpec extends WordSpec with MustMatchers {
     shoreditch.handle(SimpleRequest("base/check/successful/check/with/arg/arg")) mustEqual success
   }
 
-  //TODO: hmm this should blow up really ... how can In be resolved ???
-  //seems like the despatching is not what it seems ...
-  //so "successful/action/" is picking this up not us ...
   "handles action requests with params and empty json" in {
-    shoreditch.handle(SimpleRequest("base/action/successful/action/with/parameter", json = "")) mustEqual failure("Failed")
+    shoreditch.handle(SimpleRequest("base/action/successful/action/with/parameter", json = "")) mustEqual failure("name is mandatory")
   }
 
   "handles action requests with params and invalid json" in {
