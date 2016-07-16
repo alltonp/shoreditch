@@ -6,7 +6,7 @@ import org.scalatest.{MustMatchers, WordSpec}
 class ExampleSpec extends WordSpec with MustMatchers {
   private val shoreditch = Example.shoreditch
   private val success = Some("""{"failures":[]}""")
-  private val failure = Some("""{"failures":["Failed"]}""")
+  private def failure(reason: String) = Some(s"""{"failures":["$reason"]}""")
 
   "captures checks and actions" in {
     shoreditch.checks.size mustEqual 3
@@ -25,7 +25,7 @@ class ExampleSpec extends WordSpec with MustMatchers {
   }
 
   "handles check requests with failures" in {
-    shoreditch.handle(SimpleRequest("base/check/failure/check")) mustEqual failure
+    shoreditch.handle(SimpleRequest("base/check/failure/check")) mustEqual failure("Failed")
   }
 
   "handles action requests" in {
@@ -33,7 +33,7 @@ class ExampleSpec extends WordSpec with MustMatchers {
   }
 
   "handles action requests with failures" in {
-    shoreditch.handle(SimpleRequest("base/action/failure/action")) mustEqual failure
+    shoreditch.handle(SimpleRequest("base/action/failure/action")) mustEqual failure("Failed")
   }
 
   "handles metadata requests" in {
@@ -67,7 +67,7 @@ class ExampleSpec extends WordSpec with MustMatchers {
   //seems like the despatching is not what it seems ...
   //so "successful/action/" is picking this up not us ...
   "handles action requests with params and empty json" in {
-    shoreditch.handle(SimpleRequest("base/action/successful/action/with/parameters", json = "")) mustEqual failure
+    shoreditch.handle(SimpleRequest("base/action/successful/action/with/parameters", json = "")) mustEqual failure("Failed")
   }
 
   "handles action requests with params and invalid json" in {

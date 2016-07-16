@@ -43,9 +43,8 @@ case object SuccessfulAction extends Action {
 case object SuccessfulActionWithParameters extends Action {
   override val parameters = Parameters(Seq(In("name", None)), None)
   override def run(in: Seq[In]) = {
-//    println(in)
-//    if (in.size == 1) success(None) else
-    failure(Seq("Failed"))
+    println(in)
+    if (in.size == 1) success(None) else failure(Seq("Failed"))
   }
 }
 
